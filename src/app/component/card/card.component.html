@@ -1,0 +1,25 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{data.nome}}</mat-card-title>
+    <mat-card-subtitle>{{data.razza}}</mat-card-subtitle>
+    <p *ngIf="data.isRare">★</p>
+    <span>{{index}}</span>
+  </mat-card-header>
+  <img mat-card-image [src]="data.img" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{data.descrizione}}
+    </p>
+    <div class="disp">
+      <h5>Disponibilità:</h5>
+      <div class="cerchio" [ngStyle]="{'background' : data.isAvaiable? style : 'red'}"></div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <button mat-raised-button color="primary" [disabled] = "isDisabled">LIKE</button> -->
+    <button mat-raised-button color="primary" (click)="send(data.nome)" [ngClass]="{'hide' : clicked}" >LIKE</button>
+    <button mat-raised-button color="primary" *ngIf="clicked == true" (click)="notInterested(data.nome)">UNLIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

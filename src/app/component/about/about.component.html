@@ -1,0 +1,29 @@
+<p>about works!</p>
+
+<p>esempio di reactive form</p>
+
+<div>
+  <form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome Cane</mat-label>
+    <input matInput type="text" name="nome" formControlName="nomeCane">
+  </mat-form-field>
+  <p *ngIf="!homeform.get('nomeCane')!.valid && homeform.get('nomeCane')!.touched">Stai sbagliando qualcosa, stai più attento!</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your dog's email</mat-label>
+    <input matInput placeholder="dog@example.com" type="email" name="email" formControlName="emailCane">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+  <mat-label>--Seleziona il tipo di cane--</mat-label>
+  <mat-select name="tipo" formControlName="tipoCane">
+    <mat-option value="razza">Di razza</mat-option>
+    <mat-option value="bastardo">Bastardino</mat-option>
+  </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Una breve descrizione del tuo cane</mat-label>
+    <textarea matInput name="descrizione" formControlName="descrCane"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">Invia</button>
+</form>
+

@@ -1,0 +1,76 @@
+<mat-form-field class="example-full-width">
+  <mat-label>Titolo</mat-label>
+  <input matInput placeholder="Ex. Pizza" [(ngModel)]="title"/>
+</mat-form-field>
+
+<p>Questo è un paragrafo chiamato {{title}}</p>
+<button mat-raised-button color="primary" (click)="onClick($event)">LIKE</button>
+
+<p *ngIf="isVisible()">Ciao sono Nicola</p>
+<p *ngIf="!isVisible()">Ciao sono Paolo</p>
+
+<p *ngIf="isVisible(); then bloccoIf else bloccoElse"></p>
+<ng-template #bloccoIf> <p>e ho 40 anni</p> </ng-template>
+<ng-template #bloccoElse> <p>e ho 36 anni</p> </ng-template>
+<hr>
+<ul>
+  <li *ngFor="let elem of servizioProva.cani; index as i, first as isFirst, last as isLast, even as isEven, odd as isOdd">
+    {{isFirst}}
+    {{isOdd}}
+    {{elem.nome}}
+    <span *ngIf="elem.isAvaiable; then bloccoIf else bloccoElse"></span>
+    <ng-template #bloccoIf>Disponibile</ng-template>
+    <ng-template #bloccoElse>Non disponibile</ng-template>
+    <div class="cerchio" [ngStyle]="{'background' : elem.isAvaiable? color : 'red'}"></div>
+    <div class="rettangolo" [ngClass]="{'rettangolOnline bordo' : elem.isAvaiable,'rettangolOffline' : !elem.isAvaiable, 'raro' : elem.isRare}">{{i}}</div>
+  </li>
+</ul>
+<hr>
+<div [ngSwitch]="numero">
+<p *ngSwitchCase="1">1</p>
+<p *ngSwitchCase="2">dos</p>
+<p *ngSwitchCase="3">three</p>
+<p *ngSwitchCase="4">Quattro</p>
+<p *ngSwitchDefault>Default</p>
+</div>
+<hr>
+<div >
+  <span *ngIf="preferito !=[]">
+    <span *ngFor="let p of preferito" >Ti piace: {{p}} </span>
+  </span>
+</div>
+
+
+<app-card *ngFor="let cane of servizioProva.cani, index as i" [data]="cane" [style]="color" [index]="i" (sendData)="riceviDati($event) " (sendPref)="riceviPref($event)" ></app-card>
+<hr>
+
+<input #inputInfo value="morde">
+<button (click)="sulClick()">Click</button>
+<hr>
+<!-- creare direttive -->
+
+<h2>Scegli il colore dell'evidenziatore</h2>
+<div>
+  <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('red')">Rosso
+  <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('pink')">Rosa
+  <input type="radio" name="coloreEvidenziatore" (click)="cambiaColoreEvidenziatore('purple')">Viola
+</div>
+
+<p [appHighlight]="colore" defaultColor="orange">ciao sono un paragrafo colorato con la direttiva highlight</p>
+
+<hr>
+
+<!-- pipe -->
+
+<p>il mio colore preferito è il {{color | uppercase}}</p>
+<p>oggi è {{today | date}}</p>
+<p>oggi è {{today | date:'medium'}}</p>
+<p>oggi è {{today | date:'short'}}</p>
+<p>oggi è {{today | date:'d/MMM/yyyy - h:mm:ss'}}</p>
+<p>ora sono le {{today | date:'mm:ss'}}</p>
+
+<p>il mio numero fortunato è {{numero | number: '1.2-4'}}</p>
+<p>il mio numero fortunato è {{numero | percent: '1.2-4'}}</p>
+<p>il mio numero fortunato è {{numero | currency: 'EUR':'symbol':'1.3-5'}}</p>
+
+<hr>

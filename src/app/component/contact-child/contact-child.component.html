@@ -1,0 +1,13 @@
+<div>
+  <h1>Nome del cane: {{cane.nome}}</h1>
+  <h3>Razza: {{cane.razza}}</h3>
+  <p>Breve descrizione: {{cane.descrizione}}</p>
+  <h5>foto del cucciolo</h5>
+  <img [src]="cane.img" [alt]="cane.nome" style="width: 200px">
+  <div *ngIf="cane.isAvaiable; then bloccoIf else bloccoElse"></div>
+    <ng-template #bloccoIf><div>Adottabile</div></ng-template>
+    <ng-template #bloccoElse><div>Non Adottabile</div></ng-template>
+    <div *ngIf="cane.isRare; then bloccoIff else bloccoElsee"></div>
+    <ng-template #bloccoIff><div>Raro</div></ng-template>
+    <ng-template #bloccoElsee><div>Comune</div></ng-template>
+</div>

@@ -1,0 +1,36 @@
+<p>homepage con form del template</p>
+
+<form #homeForm="ngForm"(ngSubmit)="onSubmit(homeForm)">
+  <mat-form-field appearance="fill">
+    <mat-label>Nome delCane</mat-label>
+    <input matInput type="text" name="nome" ngModel required>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your dog's pic</mat-label>
+    <input matInput placeholder="insert url pic here" type="text" name="pic" ngModel>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Razza</mat-label>
+    <input matInput type="text" name="razza" ngModel>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+  <mat-label>Una breve descrizione del tuo cane</mat-label>
+  <textarea matInput name="descrizione" ngModel></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>--Seleziona se disponibile--</mat-label>
+    <mat-select name="disponibile" ngModel>
+      <mat-option value="si">Si</mat-option>
+      <mat-option value="no">No</mat-option>
+    </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>--Seleziona se è una razza di cane rara--</mat-label>
+        <mat-select name="rarità" ngModel>
+          <mat-option value="si">Si</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!homeForm.valid">Invia</button>
+</form>
+

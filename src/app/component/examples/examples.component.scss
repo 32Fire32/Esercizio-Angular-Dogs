@@ -1,0 +1,47 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.cerchio {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+}
+
+.rettangolo {
+  text-align: center;
+  color: white;
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+}
+
+.rettangolOnline {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  color: white;
+  background-color: green
+}
+
+.bordo {
+  border: 3px solid blue;
+}
+
+.rettangolOffline {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  color:black;
+  background-color: red
+}
+
+.raro {
+  border-bottom: 2px dotted gold;
+}

@@ -1,0 +1,6 @@
+  <h1>Lista dei Cani</h1>
+  <ul>
+    <li *ngFor="let cane of cani index as i"><a routerLink="/contact/{{i}}">{{cane.nome}}</a></li>
+  </ul>
+<router-outlet></router-outlet>
+
